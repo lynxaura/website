@@ -40,7 +40,6 @@ const ProductShowcase: React.FC = () => {
     "/images/product/product-3",
     "/images/product/product-4",
     "/images/product/product-5",
-    "/images/product/product-6",
   ];
 
   return (
