@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import ProductShowcase from './components/ProductShowcase';
 import KOLGallery from './components/KOLGallery';
 import Reviews from './components/Reviews';
-import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
@@ -17,7 +16,6 @@ const App: React.FC = () => {
         <ProductShowcase />
         <KOLGallery />
         <Reviews />
-        <About />
         <Contact />
       </main>
       <Footer />

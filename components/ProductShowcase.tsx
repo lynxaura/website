@@ -1,46 +1,46 @@
 import React, { useState } from 'react';
-import { MessageCircleHeart, Star, Smile, Smartphone } from 'lucide-react';
+import { UserCog, Brain, TrendingUp, Calendar } from 'lucide-react';
 import { ProductFeature } from '../types';
 import Constellation from './Constellation';
 
 const features: ProductFeature[] = [
   {
     id: '1',
-    title: 'AI Conversation',
-    description: 'Deep, meaningful chats tailored to your personality and emotional state.',
-    icon: MessageCircleHeart,
+    title: 'Your Personal AI',
+    description: 'Uniquely tailored to understand your personality, adapting its responses to match your vibe and needs.',
+    icon: UserCog,
   },
   {
     id: '2',
-    title: 'Zodiac Personality',
-    description: 'Powered by astrological data to provide guidance aligned with the stars.',
-    icon: Star,
+    title: 'Remembers Your Journey',
+    description: 'Cherishes important moments with you, building a shared history that grows deeper over time.',
+    icon: Brain,
   },
   {
     id: '3',
-    title: 'Warm Companion',
-    description: 'Always there to listen, comfort, and celebrate with you. A true friend.',
-    icon: Smile,
+    title: 'Mood Insights',
+    description: 'Visualize your emotional patterns and gain deeper understanding of your feelings through smart tracking.',
+    icon: TrendingUp,
   },
   {
     id: '4',
-    title: 'Cute & Portable',
-    description: 'Designed to fit in your palm or bag. Take your cosmic guide anywhere.',
-    icon: Smartphone,
+    title: 'Astrological Wisdom',
+    description: 'Get personalized readings based on your birth chart, combining ancient wisdom with modern AI.',
+    icon: Calendar,
   },
 ];
 
 const ProductShowcase: React.FC = () => {
   const [activeImage, setActiveImage] = useState(0);
   
-  // Placeholder images for the product
+  // Product images
   const productImages = [
-    "/images/product/product-1.png",
-    "/images/product/product-2.png",
-    "/images/product/product-3.png",
-    "/images/product/product-4.png",
-    "/images/product/product-5.png",
-    "/images/product/product-6.png",
+    "/images/product/product-1",
+    "/images/product/product-2",
+    "/images/product/product-3",
+    "/images/product/product-4",
+    "/images/product/product-5",
+    "/images/product/product-6",
   ];
 
   return (
@@ -62,11 +62,15 @@ const ProductShowcase: React.FC = () => {
           {/* Left: Image Gallery */}
           <div className="flex flex-col gap-4">
             <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
-              <img 
-                src={productImages[activeImage]} 
-                alt="AiMOON Product Detail" 
-                className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
-              />
+              <picture>
+                <source srcSet={`${productImages[activeImage]}.webp`} type="image/webp" />
+                <img
+                  src={`${productImages[activeImage]}.png`}
+                  alt="AiMOON Product Detail"
+                  className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
+                  loading="lazy"
+                />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
             </div>
             <div className="flex gap-4 justify-center">
@@ -78,7 +82,10 @@ const ProductShowcase: React.FC = () => {
                     activeImage === idx ? 'border-brand-500 scale-110 shadow-lg' : 'border-transparent opacity-70 hover:opacity-100'
                   }`}
                 >
-                  <img src={img} alt={`Thumbnail ${idx}`} className="w-full h-full object-cover" />
+                  <picture>
+                    <source srcSet={`${img}.webp`} type="image/webp" />
+                    <img src={`${img}.png`} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                  </picture>
                 </button>
               ))}
             </div>

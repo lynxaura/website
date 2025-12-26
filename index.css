@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', sans-serif;
+
+  /* Brand colors */
+  --color-brand-50: #F5F3FF;
+  --color-brand-100: #EDE9FE;
+  --color-brand-200: #DDD6FE;
+  --color-brand-300: #c4b5fd;
+  --color-brand-400: #A78BFA;
+  --color-brand-500: #8B5CF6;
+  --color-brand-600: #7C3AED;
+  --color-brand-700: #6f2fdd;
+  --color-brand-800: #6228c1;
+  --color-brand-900: #4C1D95;
+  --color-brand-950: #2e1159;
+
+  /* Neutral colors */
+  --color-neutral-50: #F8FAFC;
+  --color-neutral-100: #F1F5F9;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-400: #94A3B8;
+  --color-neutral-500: #64748B;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1E293B;
+  --color-neutral-900: #0F172A;
+  --color-neutral-950: #020617;
+
+  /* Heart colors */
+  --color-heart-50: #FFF0F3;
+  --color-heart-100: #ffe2e6;
+  --color-heart-200: #fec1c8;
+  --color-heart-300: #fd9ba8;
+  --color-heart-400: #FB7185;
+  --color-heart-500: #F43F5E;
+  --color-heart-600: #E11D48;
+  --color-heart-700: #c21337;
+  --color-heart-800: #980d27;
+  --color-heart-900: #63091b;
+  --color-heart-950: #440916;
+
+  /* Heal colors */
+  --color-heal-50: #F0FFF7;
+  --color-heal-100: #d7fbec;
+  --color-heal-200: #A7F3D0;
+  --color-heal-300: #77eaa9;
+  --color-heal-400: #4ADE80;
+  --color-heal-500: #22C55E;
+  --color-heal-600: #17a847;
+  --color-heal-700: #108832;
+  --color-heal-800: #0b6521;
+  --color-heal-900: #083f17;
+  --color-heal-950: #082b15;
+
+  /* Lumina colors */
+  --color-lumina-50: #FFFBEB;
+  --color-lumina-100: #FEF3C7;
+  --color-lumina-200: #FDE68A;
+  --color-lumina-300: #FCD34D;
+  --color-lumina-400: #FBBF24;
+  --color-lumina-500: #F59E0B;
+  --color-lumina-600: #D97706;
+  --color-lumina-700: #B45309;
+  --color-lumina-800: #92400E;
+  --color-lumina-900: #78350F;
+  --color-lumina-950: #451A03;
+
+  /* Aether colors */
+  --color-aether-50: #F0F9FF;
+  --color-aether-100: #E0F2FE;
+  --color-aether-200: #BAE6FD;
+  --color-aether-300: #7DD3FC;
+  --color-aether-400: #38BDF8;
+  --color-aether-500: #0EA5E9;
+  --color-aether-600: #0284C7;
+  --color-aether-700: #0369A1;
+  --color-aether-800: #075985;
+  --color-aether-900: #0C4A6E;
+  --color-aether-950: #082F49;
+
+  /* Animations */
+  --animate-float-slow: float 8s ease-in-out infinite;
+  --animate-float-slower: float 12s ease-in-out infinite reverse;
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Custom utility for flip card 3D effect */
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  .group:hover .group-hover\:rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Video modal animations */
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.2s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out;
+  }
+
+  /* Custom background gradients */
+  .bg-brand-gradient {
+    background-image: linear-gradient(135deg, #C4B5FD 0%, #8B5CF6 100%);
+  }
+  .bg-sky-light {
+    background-image: linear-gradient(180deg, #F5F3FF 0%, #FFFFFF 100%);
+  }
+  .bg-glass-surface {
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.4) 100%);
+  }
+  .bg-space-gradient {
+    background-image: radial-gradient(ellipse at bottom, #2e1159 0%, #020617 100%);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
