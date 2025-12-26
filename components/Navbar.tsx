@@ -29,8 +29,21 @@ const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <a href="#" className="flex items-center">
+          {/* Logo - Lynxaura | AiMOON */}
+          <a href="#" className="flex items-center gap-0.5 sm:gap-1">
+            {/* Lynxaura Logo */}
+            <img
+              src="/images/logo/lynxaura-logo.png"
+              alt="Lynxaura Intelligence"
+              className="h-10 sm:h-12 md:h-14 w-auto transition-all"
+            />
+
+            {/* Divider */}
+            <div className={`w-px h-8 sm:h-9 md:h-10 transition-colors ${
+              isScrolled ? 'bg-neutral-300' : 'bg-brand-300'
+            }`} />
+
+            {/* AiMOON Logo */}
             <img
               src="/images/logo/aimoon-logo.png"
               alt="AiMOON"
