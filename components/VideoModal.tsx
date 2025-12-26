@@ -26,23 +26,26 @@ const VideoModal: React.FC<VideoModalProps> = ({
   useEffect(() => {
     const detectRegion = async () => {
       try {
-        // 方法1: 通过时区粗略判断
         const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        if (timezone.includes('Asia/Shanghai') || timezone.includes('Asia/Chongqing')) {
-          setRegion('cn');
-          return;
-        }
-
-        // 方法2: 通过语言判断
         const language = navigator.language || (navigator as any).userLanguage;
-        if (language === 'zh-CN' || language === 'zh') {
-          setRegion('cn');
-          return;
-        }
 
-        // 方法3: 尝试检测网络(可选 - 需要外部API)
-        // 默认为全球
-        setRegion('global');
+        console.log('🌍 Timezone:', timezone);
+        console.log('🗣️ Language:', language);
+
+        // 只有当时区AND语言都是中国时，才使用B站
+        // 这样VPN用户（时区是中国但可能改了语言）会看到YouTube
+        const isChinaTimezone = timezone.includes('Asia/Shanghai') || timezone.includes('Asia/Chongqing');
+        const isChineseLanguage = language === 'zh-CN' || language === 'zh';
+
+        if (isChinaTimezone && isChineseLanguage) {
+          console.log('🇨🇳 Region: CN (both timezone and language match)');
+          setRegion('cn');
+        } else {
+          console.log('🌍 Region: Global');
+          console.log('  - China timezone:', isChinaTimezone);
+          console.log('  - Chinese language:', isChineseLanguage);
+          setRegion('global');
+        }
       } catch (error) {
         console.error('Region detection failed:', error);
         setRegion('global');
@@ -120,10 +123,29 @@ const VideoModal: React.FC<VideoModalProps> = ({
           title="Product Video"
         />
 
-        {/* Region Indicator (Optional - for debugging) */}
+        {/* Region Switcher - 开发环境显示，方便调试 */}
         {process.env.NODE_ENV === 'development' && (
-          <div className="absolute bottom-4 left-4 px-3 py-1 rounded-full bg-black/50 text-white text-xs backdrop-blur-sm">
-            {region === 'cn' ? '🇨🇳 Bilibili' : '🌍 YouTube'}
+          <div className="absolute bottom-4 right-4 flex gap-2 z-20">
+            <button
+              onClick={() => setRegion('global')}
+              className={`px-3 py-1 rounded-full text-xs backdrop-blur-sm transition-all ${
+                region === 'global'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-black/50 text-white/70 hover:bg-black/70'
+              }`}
+            >
+              🌍 YouTube
+            </button>
+            <button
+              onClick={() => setRegion('cn')}
+              className={`px-3 py-1 rounded-full text-xs backdrop-blur-sm transition-all ${
+                region === 'cn'
+                  ? 'bg-blue-500 text-white'
+                  : 'bg-black/50 text-white/70 hover:bg-black/70'
+              }`}
+            >
+              🇨🇳 Bilibili
+            </button>
           </div>
         )}
       </div>
