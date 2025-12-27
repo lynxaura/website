@@ -1,0 +1,11 @@
+{
+    "name": "api",
+    "version": "1.0.0",
+    "description": "Azure Function API",
+    "scripts": {
+        "start": "func start",
+        "test": "echo \"No test specified\" && exit 1"
+    },
+    "dependencies": {},
+    "devDependencies": {}
+}
