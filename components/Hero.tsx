@@ -122,8 +122,8 @@ const Hero: React.FC = () => {
       <VideoModal
         isOpen={isVideoOpen}
         onClose={() => setIsVideoOpen(false)}
-        youtubeId="HeEd6jI1nu4"
-        bilibiliId="BV1xx411c7mD"
+        youtubeId="njqafMu89O0"
+        bilibiliId="BV168BkBjEQK"
       />
 
       {/* Waitlist Modal */}
